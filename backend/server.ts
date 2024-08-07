@@ -7,6 +7,7 @@ const dataSource = new DataSource({
     username: process.env.USERNAME,
     password: process.env.PASSWORD,
     database: process.env.DB,
+    entities: ["entites/*.ts"],
     synchronize: true
 
 })
