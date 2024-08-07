@@ -1,4 +1,7 @@
 import { DataSource } from "typeorm";
+import * as dotenv from 'dotenv';
+
+dotenv.config()
 
 const dataSource = new DataSource({
     type: 'mysql',
@@ -7,7 +10,7 @@ const dataSource = new DataSource({
     username: process.env.USERNAME,
     password: process.env.PASSWORD,
     database: process.env.DB,
-    entities: ["entites/*.ts"],
+    entities: ["entities/*.ts"],
     synchronize: true
 
 })

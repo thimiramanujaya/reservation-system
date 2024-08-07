@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
+import { Doctor } from "./Doctor";
 
 @Entity('specialization')
 export class Specialization extends BaseEntity {
@@ -11,6 +12,11 @@ export class Specialization extends BaseEntity {
     
     @Column()
     description: string;
+
+    @ManyToMany(
+        () => Doctor
+    )
+    doctors: Doctor[];
     
 
 }

@@ -1,10 +1,12 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, PrimaryColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Patient } from "./Patient";
+import { Doctor } from "./Doctor";
 
 export enum Status {
     SENT = "sent",
     PENDING = "pending",
     RESERVED = "reserved",
-    POSTPONDED = "postponded",
+    POSTPONED = "postponed",
     REJECTED = "rejected"
 }
 
@@ -14,16 +16,6 @@ export class Reservation extends BaseEntity {
 
     @PrimaryGeneratedColumn("uuid")
     reservation_id: string;
-
-    @PrimaryColumn({
-        unique: true
-    })
-    doctor_id: string;
-    
-    @PrimaryColumn({
-        unique: true
-    })
-    patient_id: string;
 
     @Column({
         type: 'date'
@@ -47,5 +39,24 @@ export class Reservation extends BaseEntity {
 
     @UpdateDateColumn()
     updated_at: Date;
+
+    @ManyToOne(
+        () => Patient,
+        patient => patient.p_reservations
+    )
+    @JoinColumn({
+        name: 'patient_id'
+    })
+    patient: Patient;
+
+
+    @ManyToOne(
+        () => Doctor,
+        doctor => doctor.d_reservations
+    )
+    @JoinColumn({
+        name: 'doctor_id'
+    })
+    doctor: Doctor;
 
 }

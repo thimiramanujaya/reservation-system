@@ -1,4 +1,6 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany, ManyToMany, JoinTable } from "typeorm";
+import { Reservation } from "./Reservation";
+import { Specialization } from "./Specialization";
 
 @Entity('doctor')
 export class Doctor extends BaseEntity {
@@ -9,10 +11,6 @@ export class Doctor extends BaseEntity {
     @Column()
     name: string;
     
-    @PrimaryColumn({
-        unique: true
-    })
-    specialization_id: string;
 
     @Column({
         unique: true
@@ -40,5 +38,29 @@ export class Doctor extends BaseEntity {
 
     @UpdateDateColumn()
     updated_at: Date;
+
+    @OneToMany(
+        () => Reservation,
+        reservation => reservation.doctor
+    )
+    d_reservations: Reservation[]
+
+
+    @ManyToMany(
+        () => Specialization,
+    )
+    @JoinTable({
+        name: 'doctors_specializations',
+        joinColumn: {
+            name: 'doctor',
+            referencedColumnName: 'doctor_id',
+        },
+        inverseJoinColumn: {
+            name: 'specialization',
+            referencedColumnName: 'specialization_id'
+        }
+
+    })
+    specializations: Specialization[];
 
 }

@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, BaseEntity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { Reservation } from "./Reservation";
 
 @Entity('patient')
 export class Patient extends BaseEntity {
@@ -37,5 +38,10 @@ export class Patient extends BaseEntity {
     @UpdateDateColumn()
     updated_at: Date;
     
+    @OneToMany(
+        () => Reservation,
+        reservation => reservation.patient
+    )
+    p_reservations: Reservation[]
 
 }
