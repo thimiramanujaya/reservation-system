@@ -19,6 +19,6 @@ router.post('/', createReservation)
 
 router.delete('/:id', deleteReservation)
 
-router.patch('/:id', updateReservation)
+router.put('/:id', updateReservation)
 
 export default router

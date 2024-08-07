@@ -8,7 +8,7 @@ export class Specialization extends BaseEntity {
     specialization_id: string;
 
     @Column()
-    name: string;
+    speciality: string;
     
     @Column()
     description: string;

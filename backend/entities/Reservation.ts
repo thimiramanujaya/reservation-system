@@ -42,7 +42,11 @@ export class Reservation extends BaseEntity {
 
     @ManyToOne(
         () => Patient,
-        patient => patient.p_reservations
+        patient => patient.p_reservations,
+        {
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE"
+        }
     )
     @JoinColumn({
         name: 'patient_id'
@@ -52,7 +56,11 @@ export class Reservation extends BaseEntity {
 
     @ManyToOne(
         () => Doctor,
-        doctor => doctor.d_reservations
+        doctor => doctor.d_reservations,
+        {
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE"
+        }
     )
     @JoinColumn({
         name: 'doctor_id'

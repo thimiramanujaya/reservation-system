@@ -19,6 +19,6 @@ router.post('/', createDoctor)
 
 router.delete('/:id', deleteDoctor)
 
-router.patch('/:id', updateDoctor)
+router.put('/:id', updateDoctor)
 
 export default router
