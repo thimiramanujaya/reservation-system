@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Appbar from './components/AppBar';
-import Sidebar from './components/Sidebar';
+import Appbar from './components/Appbar/Appbar';
+import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Doctors from './pages/Doctors';
 import Patients from './pages/Patients';

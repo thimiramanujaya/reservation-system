@@ -1,4 +1,4 @@
-
+import './Reservations.scss'
 
 const Reservations = () => {
   return (

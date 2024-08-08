@@ -1,4 +1,4 @@
-
+import './Doctors.scss'
 
 const Doctors = () => {
   return (

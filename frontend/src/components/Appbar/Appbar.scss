@@ -1,0 +1,36 @@
+.appbar {
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: var(--primary_color);
+    padding: 1rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    margin-left: 1rem;
+    background-color: var(--secondray_color);
+    padding: 0 0.5rem;
+    border-radius: 3px;
+}
+
+.input {
+    margin-left: 0.3rem;
+}
+
+.input input {
+    color: var(--text_color);
+}
+
+.btn {
+    padding: 1px;
+    color: var(--text_color);
+}
+
+.options {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+}
