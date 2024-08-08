@@ -72,7 +72,7 @@ const deleteReservation = async (req: Request, res: Response): Promise<void> => 
             res.status(400).json({error: 'Reservation not found'})
             return
         }
-        res.status(200).json(deleteReservation)
+        res.status(200).json(deletedReservation)
         
     } catch (error) {
         res.status(400).json({error: (error as Error).message})
@@ -95,7 +95,7 @@ const updateReservation = async (req: Request, res: Response): Promise<void> => 
 
         const updatedReservation = await Reservation.findOne({ where: { reservation_id: id } })
 
-        res.status(200).json(updateReservation)
+        res.status(200).json(updatedReservation)
 
     } catch (error) {
         res.status(400).json({ error: (error as Error).message })
