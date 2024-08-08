@@ -1,34 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchReservations } from '../../states/reservationState'
 import DetailsCard from '../../components/DetailsCard/DetailsCard'
 import RegisterForm from '../../components/RegisterForm'
-import Stack from '@mui/material/Stack';
-import axios from 'axios'
+import Stack from '@mui/material/Stack'
 import './Reservations.scss'
 
 const Reservations = () => {
 
-  const [reservations, setReservations] = useState(null)
+  const reservations = useSelector(state => state.reservations.reservations);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchReservations = async () => {
-      try {
-        const response = await axios.get('/api/reservations/', {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-  
-        const reservations = response.data;
-        setReservations(reservations);
-        console.log(reservations);
-  
-      } catch (error) {
-        console.error('Error fetching reservations:', error);
-      }
-    };
-  
-    fetchReservations();
-  }, []);
+    dispatch(fetchReservations())
+  }, [dispatch]);
+  //console.log(reservations)
 
 
   return (

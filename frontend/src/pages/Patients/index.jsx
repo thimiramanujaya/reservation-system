@@ -1,35 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchPatients } from '../../states/patientState'
 import DetailsCard from '../../components/DetailsCard/DetailsCard'
 import RegisterForm from '../../components/RegisterForm'
 import Stack from '@mui/material/Stack';
-import axios from 'axios'
 import './Patients.scss'
 
 const Patients = () => {
 
-  const [patients, setPatients] = useState(null)
+  const patients = useSelector(state => state.patients.patients);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchPatients = async () => {
-      try {
-        const response = await axios.get('/api/patients/', {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-  
-        const patients = response.data;
-        setPatients(patients);
-        console.log(patients);
-  
-      } catch (error) {
-        console.error('Error fetching patients:', error);
-      }
-    };
-  
-    fetchPatients();
-  }, []);
-
+    dispatch(fetchPatients())
+  }, [dispatch]);
+  //console.log(patients)
 
   return (
     <div className="patients">
