@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchReservations } from '../../states/reservationState'
 import DetailsCard from '../../components/DetailsCard/DetailsCard'
-import RegisterForm from '../../components/RegisterForm'
+import RegisterForm from '../../components/RegisterForm/RegisterForm'
 import Stack from '@mui/material/Stack'
 import './Reservations.scss'
 
@@ -20,12 +20,15 @@ const Reservations = () => {
   return (
     <div className="reservations">
       <h1>Reservations</h1>
-      <Stack spacing={2} className='stack'>
-        {reservations && reservations.map((reservation) => (
-            <DetailsCard key={reservation.reservation_id} entityData={reservation} entity={'reservation'}/>
-          ))
-        }
-      </Stack>
+      <div className="main">
+        <Stack spacing={2} className='stack'>
+          {reservations && reservations.map((reservation) => (
+              <DetailsCard key={reservation.reservation_id} entityData={reservation} entity={'reservation'}/>
+            ))
+          }
+        </Stack>
+        <RegisterForm entity={'reservation'}/>
+      </div>
     </div>
   )
 }

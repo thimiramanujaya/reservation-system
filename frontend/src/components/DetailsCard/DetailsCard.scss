@@ -1,4 +1,4 @@
-.card {
+.card, .default-card {
     width: 25%;
     min-width: 300px;
     padding: 1rem;
@@ -19,4 +19,11 @@
     border: 1px solid purple;
     border-radius: 8px;
     padding: 0.3rem 0.8rem;
+}
+
+.default-card {
+    h2, span {
+        background-color: var(--primary_color);
+        border-radius: 4px;
+    }
 }

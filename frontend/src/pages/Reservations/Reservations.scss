@@ -5,6 +5,17 @@
     padding: 2rem;
 }
 
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 5px;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+    
+}
+
 .stack {
     flex: 1;
     padding: 1.5rem;

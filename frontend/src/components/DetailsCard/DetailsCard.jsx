@@ -15,7 +15,6 @@ const DetailsCard = ({ entityData, entity }) => {
           </div>
         </div>
       )
-      break
     
     case 'patient':
       return (
@@ -30,11 +29,22 @@ const DetailsCard = ({ entityData, entity }) => {
           </div>
         </div>
       )
-      break
     
     case 'reservation':
       return (
         <div className="card">
+          <h2>{entityData.reservation_id}</h2>
+          <div className="card-body">
+            <span>{entityData.reserved_date}</span>
+            <span>{entityData.reserved_time}</span>
+            <span className='chip'>{entityData.status}</span>
+          </div>
+        </div>
+      )
+
+    default:
+      return (
+        <div className="default-card">
           <h2>{entityData.reservation_id}</h2>
           <div className="card-body">
             <span>{entityData.reserved_date}</span>
